@@ -11,6 +11,15 @@ class App extends React.Component {
   //   this.getWeather = this.getWeather.bind(this);
   // };
   
+  state = {
+    temperature: undefined,
+    city: undefined,
+    country: undefined,
+    humidity: undefined,
+    description: undefined,
+    error: undefined
+  };
+
   getWeather = async (e) => {
     e.preventDefault();
     const city = e.target.elements.city.value;
