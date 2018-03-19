@@ -1,0 +1,11 @@
+body{
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+
+.error{
+    color: rgb(249, 31, 31);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
