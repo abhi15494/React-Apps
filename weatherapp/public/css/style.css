@@ -9,3 +9,10 @@ body{
     color: rgb(249, 31, 31);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
