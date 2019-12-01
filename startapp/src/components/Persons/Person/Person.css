@@ -1,0 +1,24 @@
+.Person {
+    width: calc(50% - 30px);
+    margin: 15px;
+    box-shadow: 0 2px 4px #aaaaaa;
+    padding: 16px;
+    border-radius: 16px;
+    text-align: center;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+.Person input[type="text"] {
+    padding: 8px 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 16px;
+    border: 1px solid #cccccc;
+}
+
+.Person input[type="text"]:focus {
+    outline: none;
+    border-color: teal;
+    border-width: 2px;
+}
