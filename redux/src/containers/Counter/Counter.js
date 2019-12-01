@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import CounterControl from '../../components/CounterControl/CounterControl';
 import CounterOutput from '../../components/CounterOutput/CounterOutput';
-
+import * as actionTypes from '../../store/store.action';
 // Handling and getting state from store
 // connect is a higher order component function 
 import { connect } from 'react-redux';
@@ -40,11 +40,15 @@ class Counter extends Component {
                 <CounterControl label={'Subtract ' + this.state.step} clicked={() => this.props.onSubCounter(this.state.step)} />
                 <hr/>
 
-                <button onClick={this.props.onStoreResult}>Store Result</button>
+                <button onClick={() => this.props.onStoreResult(this.props.ctr)}>Store Result</button>
                 <ul>
                     {
                         this.props.storedResult.map( val =>
-                            <li key={val.id} onClick={this.props.onDeleteResult}>{val.value}</li>
+                            <li key={val.id}>
+                                <a onClick={() => this.props.onDeleteResult(val.id)}>
+                                    {val.value}
+                                </a>
+                            </li>
                         )
                     }
                 </ul>
@@ -58,20 +62,21 @@ class Counter extends Component {
 // Fetching state from store and assigning the value to props of <Counter/>
 const mapStateToProps = state => {
     return {
-        ctr: state.counter,
-        storedResult: state.results
+        ctr: state.ctr.counter,
+        storedResult: state.res.results
     };
 }
 
-// Configuration 2: Actions 
+// Configuration 2: ActionTypes 
 const mapActionToProps = dispatch => {
     return {
-        onIncCounter: () => dispatch({ type: 'INC_COUNTER' }),
-        onAddCounter: val => dispatch({ type: 'ADD_COUNTER', payload: val }),
-        onDecCounter: () => dispatch({ type: 'DEC_COUNTER' }),
-        onSubCounter: val => dispatch({ type: 'SUB_COUNTER', payload: val }),
-        onStoreResult: () => dispatch({ type: 'STORE_RESULT' }),
-        onDeleteResult: () => dispatch({ type: 'DELETE_RESULT' }),
+        onIncCounter: () => dispatch({ type: actionTypes.INC_COUNTER }),
+        onAddCounter: val => dispatch({ type: actionTypes.ADD_COUNTER, payload: val }),
+        onDecCounter: () => dispatch({ type: actionTypes.DEC_COUNTER }),
+        onSubCounter: val => dispatch({ type: actionTypes.SUB_COUNTER, payload: val }),
+
+        onStoreResult: result => dispatch({ type: actionTypes.STORE_RESULT, payload: result }),
+        onDeleteResult: id => dispatch({ type: actionTypes.DELETE_RESULT, payload: id }),
     }
 }
 
