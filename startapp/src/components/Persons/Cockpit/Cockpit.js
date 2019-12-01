@@ -3,7 +3,8 @@ import Hoc from '../../../hoc/hoc';
 import './Cockpit.css';
 
 // Help us usng media query and pseudo style in js inlining styling
-import radium from 'radium';
+import radium, { StyleRoot } from 'radium';
+// TO handle media query we need special selector name STYLEROOT
 
 const Cockpit = props => {
     // Adding style using JavaScript
@@ -25,22 +26,36 @@ const Cockpit = props => {
             padding: '1rem 0 2rem'
         }
     }
-// Changing styles using js
-    if(!props.showPerson) style.buttonStyle.backgroundColor = 'red';
 
-    const button = <button style={style.buttonStyle} onClick={props.onToggled}>Switch Change</button>;    
-    
+    const styleMedia = {
+        width: '800px',
+        margin: '0 auto',
+        textAlign: 'center',
+        backgroundColor: '#dddddd',
+        '@media (min-width: 500px)': {
+            backgroundColor: '#fefefe',
+            width: '450px'
+        }
+    }
+    // Changing styles using js
+    if (!props.showPerson) style.buttonStyle.backgroundColor = 'red';
+
+    const button = <button style={style.buttonStyle} onClick={props.onToggled}>Switch Change</button>;
+
     // Handling dynamic class concept
-    let colorClass=[];
-    if(props.showPerson) colorClass.push('green');
+    let colorClass = [];
+    if (props.showPerson) colorClass.push('green');
     else colorClass.push('red');
     colorClass.push('bold');
-    return (
-        <Hoc style={style.contentStyle}>
-            <h1>{props.apptitle}</h1>
-            <p className={colorClass.join(' ')}>Lorem Ipsum Lat ona gold d roger.</p>
-            {button}
+    return (<StyleRoot>
+        <Hoc style={styleMedia}>
+            <div style={style.contentStyle}>
+                <h1>{props.apptitle}</h1>
+                <p className={colorClass.join(' ')}>Lorem Ipsum Lat ona gold d roger.</p>
+                {button}
+            </div>
         </Hoc>
+    </StyleRoot>
     );
 }
 export default radium(Cockpit);
