@@ -1,0 +1,80 @@
+import React, { Component } from 'react';
+
+import CounterControl from '../../components/CounterControl/CounterControl';
+import CounterOutput from '../../components/CounterOutput/CounterOutput';
+
+// Handling and getting state from store
+// connect is a higher order component function 
+import { connect } from 'react-redux';
+
+class Counter extends Component {
+    state = {
+        counter: 0,
+        step: 10
+    }
+
+    counterChangedHandler = (action, value) => {
+        switch (action) {
+            case 'inc':
+                this.setState((prevState) => { return { counter: prevState.counter + 1 } })
+                break;
+            case 'dec':
+                this.setState((prevState) => { return { counter: prevState.counter - 1 } })
+                break;
+            case 'add':
+                this.setState((prevState) => { return { counter: prevState.counter + value } })
+                break;
+            case 'sub':
+                this.setState((prevState) => { return { counter: prevState.counter - value } })
+                break;
+        }
+    }
+
+    render() {
+        return (
+            <div>
+                <CounterOutput value={this.props.ctr} />
+                <CounterControl label="Increment" clicked={() => this.props.onIncCounter()} />
+                <CounterControl label={'Add ' + this.state.step} clicked={() => this.props.onAddCounter(this.state.step)} />
+                <CounterControl label="Decrement" clicked={() => this.props.onDecCounter()} />
+                <CounterControl label={'Subtract ' + this.state.step} clicked={() => this.props.onSubCounter(this.state.step)} />
+                <hr/>
+
+                <button onClick={this.props.onStoreResult}>Store Result</button>
+                <ul>
+                    {
+                        this.props.storedResult.map( val =>
+                            <li key={val.id} onClick={this.props.onDeleteResult}>{val.value}</li>
+                        )
+                    }
+                </ul>
+            </div>
+        );
+    }
+}
+
+// Do after class
+// Configuration 1
+// Fetching state from store and assigning the value to props of <Counter/>
+const mapStateToProps = state => {
+    return {
+        ctr: state.counter,
+        storedResult: state.results
+    };
+}
+
+// Configuration 2: Actions 
+const mapActionToProps = dispatch => {
+    return {
+        onIncCounter: () => dispatch({ type: 'INC_COUNTER' }),
+        onAddCounter: val => dispatch({ type: 'ADD_COUNTER', payload: val }),
+        onDecCounter: () => dispatch({ type: 'DEC_COUNTER' }),
+        onSubCounter: val => dispatch({ type: 'SUB_COUNTER', payload: val }),
+        onStoreResult: () => dispatch({ type: 'STORE_RESULT' }),
+        onDeleteResult: () => dispatch({ type: 'DELETE_RESULT' }),
+    }
+}
+
+// To connect component to store; and 
+// connect( state_register, action_register )
+export default connect(mapStateToProps, mapActionToProps)(Counter);
