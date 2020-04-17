@@ -1,0 +1,46 @@
+@mixin media($point) {
+    // mobile
+    $bp-sm: "(min-width:"+ map-get($grid-breakpoints, sm) + ")";
+    // tablet
+    $bp-md: "(min-width:"+ map-get($grid-breakpoints, md) + ")";
+    // desktop
+    $bp-lg: "(min-width:"+ map-get($grid-breakpoints, lg) + ")";
+
+    @if $point==mobile {
+        @media #{$bp-sm} {
+            @content;
+        }
+    }
+
+    @else if $point==tablet {
+        @media #{$bp-md} {
+            @content;
+        }
+    }
+
+    @else if $point==desktop {
+        @media #{$bp-lg} {
+            @content;
+        }
+    }
+}
+
+// Extended breakpoint mixin
+@mixin mobile-only {
+    @media (max-width: map-get($grid-breakpoints, md) - 1) {
+        @content;
+    }
+}
+
+@mixin tablet-only {
+    @media (min-width: map-get($grid-breakpoints, "md")) and (max-width: map-get($grid-breakpoints, "lg") - 1) {
+        @content;
+    }
+}
+
+@mixin ie-only {
+    @media all and (-ms-high-contrast: none),
+    (-ms-high-contrast: active) {
+        @content;
+    }
+}

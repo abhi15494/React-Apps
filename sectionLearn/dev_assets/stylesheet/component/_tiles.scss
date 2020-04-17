@@ -1,0 +1,64 @@
+.tiles {
+    &_container {
+        margin: 2rem auto;
+
+        @include media(tablet) {
+            max-width: 40rem;
+        }
+
+        @include media(desktop) {
+            max-width: 60rem;
+        }
+    }
+
+    &_box {
+        &_inner {}
+
+        &_outer {}
+
+        &_list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        &_item {
+            &_container {
+                flex: 0 0 100%;
+
+                @include media(tablet) {
+                    flex: 0 0 50%;
+                }
+
+                @include media(desktop) {
+                    flex: 0 0 33.33%;
+                }
+            }
+
+            &_inner {
+                padding: 1rem;
+                border: 0.1rem solid #aaaaaa;
+                box-shadow: 0 0 1rem #a19c9c;
+            }
+
+            &_outer {
+                padding: 0.5rem;
+            }
+
+            &_title {
+                background-color: var(--primary);
+                padding: 1rem;
+                margin: 0;
+            }
+            
+            &_subtitle {
+                background-color: var(--secondary);
+                padding: 1rem;
+                margin: 0;
+            }
+
+            &_description {}
+        }
+    }
+}

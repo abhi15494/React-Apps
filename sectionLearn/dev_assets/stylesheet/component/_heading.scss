@@ -1,0 +1,38 @@
+.heading {
+    &_container {
+        padding: 0;
+        margin: 2rem auto;
+
+        @include media(tablet) {
+            max-width: 40rem;
+        }
+
+        @include media(desktop) {
+            max-width: 60rem;
+        }
+    }
+
+    &_box {
+        &_outer {}
+
+        &_inner {}
+
+        &_title {
+            font-size: 2rem;
+            line-height: 1;
+            margin: 0;
+            color: var(--primary);
+        }
+        
+        &_subtitle {
+            font-size: 1.25rem;
+            line-height: 1;
+            margin: 1rem 0;
+            color: var(--secondary);
+        }
+
+        &_description {
+            margin: 0;
+        }
+    }
+}

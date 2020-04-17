@@ -1,0 +1,8 @@
+@mixin theme-vars {
+    :root {
+        @each $theme, $val in $themes {
+            --#{$theme}: #{$val};
+        }
+    }
+}
+@include theme-vars();

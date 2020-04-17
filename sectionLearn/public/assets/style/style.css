@@ -1,0 +1,122 @@
+:root {
+  --primary: teal;
+  --secondary: orange;
+  --cwhite: white;
+  --cblack: black; }
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; }
+
+.container {
+  padding: 0;
+  margin: 2rem auto; }
+  @media (min-width: 768px) {
+    .container {
+      max-width: 40rem; } }
+  @media (min-width: 992px) {
+    .container {
+      max-width: 60rem; } }
+
+.heading_container {
+  padding: 0;
+  margin: 2rem auto; }
+  @media (min-width: 768px) {
+    .heading_container {
+      max-width: 40rem; } }
+  @media (min-width: 992px) {
+    .heading_container {
+      max-width: 60rem; } }
+
+.heading_box_title {
+  font-size: 2rem;
+  line-height: 1;
+  margin: 0;
+  color: var(--primary); }
+
+.heading_box_subtitle {
+  font-size: 1.25rem;
+  line-height: 1;
+  margin: 1rem 0;
+  color: var(--secondary); }
+
+.heading_box_description {
+  margin: 0; }
+
+.image_container {
+  padding: 0; }
+
+.image_box_inner {
+  position: relative;
+  background-color: #aaaaaa;
+  height: 12rem;
+  overflow: hidden; }
+  @media (min-width: 768px) {
+    .image_box_inner {
+      height: 15rem; } }
+  @media (min-width: 992px) {
+    .image_box_inner {
+      height: 20rem; } }
+
+.image_box_img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: auto; }
+
+.tiles_container {
+  margin: 2rem auto; }
+  @media (min-width: 768px) {
+    .tiles_container {
+      max-width: 40rem; } }
+  @media (min-width: 992px) {
+    .tiles_container {
+      max-width: 60rem; } }
+
+.tiles_box_list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap; }
+
+.tiles_box_item_container {
+  flex: 0 0 100%; }
+  @media (min-width: 768px) {
+    .tiles_box_item_container {
+      flex: 0 0 50%; } }
+  @media (min-width: 992px) {
+    .tiles_box_item_container {
+      flex: 0 0 33.33%; } }
+
+.tiles_box_item_inner {
+  padding: 1rem;
+  border: 0.1rem solid #aaaaaa;
+  box-shadow: 0 0 1rem #a19c9c; }
+
+.tiles_box_item_outer {
+  padding: 0.5rem; }
+
+.tiles_box_item_title {
+  background-color: var(--primary);
+  padding: 1rem;
+  margin: 0; }
+
+.tiles_box_item_subtitle {
+  background-color: var(--secondary);
+  padding: 1rem;
+  margin: 0; }
+
+.header_box_nav_list {
+  display: flex;
+  justify-content: center; }
+
+.header_box_nav_link {
+  padding: 1rem;
+  display: inline-block; }
+  .header_box_nav_link.active_nav {
+    background-color: var(--primary);
+    color: var(--cwhite); }

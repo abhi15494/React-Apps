@@ -1,0 +1,32 @@
+.image {
+
+    &_container {
+        padding: 0;
+    }
+
+    &_box {
+        &_outer {}
+
+        &_inner {
+            position: relative;
+            background-color: #aaaaaa;
+            height: 12rem;
+            @include media(tablet) {
+                height: 15rem;
+            }
+            @include media(desktop) {
+                height: 20rem;
+            }
+            overflow: hidden;
+        }
+
+        &_img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: auto;
+        }
+    }
+}
