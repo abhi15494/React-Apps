@@ -10,4 +10,42 @@
     top: 30%;
     left: 25%;
     width: 50%;
+    transition: 0.3s all cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+/* 
+.ModalOpen {
+}
+
+.ModalClose {
+} */
+
+.fade-slide-enter {
+    animation: openModal 0.5s ease-in forwards;
+}
+.fade-slide-enter-active {
+    
+}
+.fade-slide-exit {
+    opacity: 0;
+    transform: translateY(-100%);
+}
+.fade-slide-exit-active {
+    
+}
+
+@keyframes openModal{
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    
+    50% {
+        opacity: 1;
+        transform: translateY(50%);
+    }
+    
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
 }
