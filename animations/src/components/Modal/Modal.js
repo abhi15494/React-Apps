@@ -16,6 +16,12 @@ const Modal = (props) => {
         mountOnEnter
         unmountOnExit
         classNames="fade-slide"
+    // we can change the classnames by using a JS object
+    // enter, enterActive,
+    // exit, exitActive,
+    // appear, appearActive
+
+
     // This classname is used to generate some new classes by appending
     // > fade-slide-enter
     // > fade-slide-enter-active
